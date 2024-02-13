@@ -43,7 +43,13 @@ exports.createRecommendation = async (req, res, next) => {
 
     // Envia um POST para o microserviço Flask com os dados da nova recomendação
     const microservicoUrl = 'http://localhost:5000/update_recommendation';
+    const microserviceImage = 'http://localhost:5000/update_image';
     await axios.post(microservicoUrl, {
+      nome: titulo, // Envie o título como nome para o microserviço Flask
+      id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
+    });
+
+    await axios.post(microserviceImage, {
       nome: titulo, // Envie o título como nome para o microserviço Flask
       id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
     });
