@@ -1,5 +1,5 @@
 const Recommendation = require('../models/Recomendation');
-
+const axios = require('axios');
 
 
 exports.getAllRecommendations = async (req, res, next) => {
@@ -39,6 +39,13 @@ exports.createRecommendation = async (req, res, next) => {
       created_at: new Date(),
       updated_at: new Date(),
       reclink
+    });
+
+    // Envia um POST para o microserviço Flask com os dados da nova recomendação
+    const microservicoUrl = 'http://localhost:5000/update_recommendation';
+    await axios.post(microservicoUrl, {
+      nome: titulo, // Envie o título como nome para o microserviço Flask
+      id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
     });
 
     res.status(201).json(newRecommendation);

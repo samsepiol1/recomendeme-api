@@ -3,10 +3,12 @@ const recommendationsRouter = require('./routes/recomendationRoutes');
 const { specs, swaggerUi } = require('./swaggerConfig');
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cors = require('cors');
+
 
 // Middleware para permitir o uso de JSON nas requisições
 app.use(express.json());
-
+app.use(cors());
 // Rota raiz
 
 // Rotas para recomendações
