@@ -28,12 +28,12 @@ exports.getRecommendationById = async (req, res, next) => {
 
 exports.createRecommendation = async (req, res, next) => {
   try {
-    const { titulo, artista, descricao, img, reclink } = req.body;
+    const { titulo, usuario, descricao, img, reclink } = req.body;
 
     // Cria uma nova recomendação no banco de dados
     const newRecommendation = await Recommendation.create({
       titulo,
-      artista,
+      usuario,
       descricao,
       img,
       created_at: new Date(),
@@ -51,7 +51,7 @@ exports.createRecommendation = async (req, res, next) => {
 exports.updateRecommendation = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { titulo, artista, descricao, img, reclink } = req.body;
+    const { titulo, usuario, descricao, img, reclink } = req.body;
 
     // Procura a recomendação pelo ID
     const recommendation = await Recommendation.findByPk(id);
@@ -62,7 +62,7 @@ exports.updateRecommendation = async (req, res, next) => {
 
     // Atualiza os campos da recomendação
     recommendation.titulo = titulo;
-    recommendation.artista = artista;
+    recommendation.usuario = usuario;
     recommendation.descricao = descricao;
     recommendation.img = img;
     recommendation.updated_at = new Date();

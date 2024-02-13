@@ -23,7 +23,7 @@ describe('Recomendações', () => {
     it('Verificar o cadastro de Recomendação', (done) => {
       let recommendation = {
         titulo: "Minha Recomendação",
-        artista: "Nome do Artista",
+        usuario: "Nome do usuario",
         descricao: "Descrição da Recomendação",
         img: "url_da_imagem",
         created_at: new Date(),
@@ -49,7 +49,7 @@ describe('Recomendações', () => {
           res.should.have.status(200);
           res.body.should.have.property('id_').eql(id_); // Verificamos se existe a propriedade id_, e se ela é igual ao ID especificado
           res.body.should.have.property('titulo'); // Verificamos se existe a propriedade titulo
-          res.body.should.have.property('artista');
+          res.body.should.have.property('usuario');
           res.body.should.have.property('descricao');
           res.body.should.have.property('img');
           res.body.should.have.property('created_at');

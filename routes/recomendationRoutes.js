@@ -64,7 +64,7 @@ router.get('/:id', recommendationsController.getRecommendationById);
  *             properties:
  *               titulo:
  *                 type: string
- *               artista:
+ *               usuario:
  *                 type: string
  *               descricao:
  *                 type: string
@@ -74,7 +74,7 @@ router.get('/:id', recommendationsController.getRecommendationById);
  *                 type: string
  *             required:
  *               - titulo
- *               - artista
+ *               - usuario
  *               - descricao
  *     responses:
  *       201:
@@ -108,7 +108,7 @@ router.post('/', recommendationsController.createRecommendation);
  *             properties:
  *               titulo:
  *                 type: string
- *               artista:
+ *               usuario:
  *                 type: string
  *               descricao:
  *                 type: string

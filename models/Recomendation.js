@@ -11,7 +11,7 @@ const Recommendation = sequelize.define('Recommendation', {
   titulo: {
     type: DataTypes.STRING(255)
   },
-  artista: {
+  usuario: {
     type: DataTypes.STRING(255)
   },
   descricao: {
