@@ -35,7 +35,7 @@ A API do RecomendeMe é um serviço web desenvolvido para fornecer operações C
 - Uma recomendação é composta pelos seguintes atributos:
   - `id`: Identificador único da recomendação.
   - `titulo`: Título da recomendação.
-  - `artista`: Nome do artista, autor ou criador da recomendação.
+  - `usuario`: Nome do usuario que fez a recomendação.
   - `descricao`: Descrição detalhada da recomendação.
   - `img`: URL da imagem associada à recomendação.
   - `created_at`: Data e hora de criação da recomendação.
