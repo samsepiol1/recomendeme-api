@@ -24,6 +24,7 @@ const recommendationsController = require('../controllers/recomendationControlle
  *       500:
  *         description: Erro interno do servidor.
  */
+
 router.get('/', recommendationsController.getAllRecommendations);
 
 /**
@@ -47,6 +48,11 @@ router.get('/', recommendationsController.getAllRecommendations);
  *       500:
  *         description: Erro interno do servidor.
  */
+
+router.get('/recommentadion', recommendationsController.getLatestRecommendation);
+
+
+
 router.get('/:id', recommendationsController.getRecommendationById);
 
 /**
@@ -150,5 +156,9 @@ router.put('/:id', recommendationsController.updateRecommendation);
  *         description: Erro interno do servidor.
  */
 router.delete('/:id', recommendationsController.deleteRecommendation);
+
+
+
+
 
 module.exports = router;

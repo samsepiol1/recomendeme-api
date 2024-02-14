@@ -18,7 +18,7 @@ exports.getRecommendationById = async (req, res, next) => {
   try {
     const recommendation = await Recommendation.findByPk(id);
     if (!recommendation) {
-      return res.status(404).json({ error: 'Recomendação não encontrada' });
+      return res.status(404).json({ error: 'vc passou por' });
     }
     res.json(recommendation);
   } catch (error) {
@@ -111,6 +111,24 @@ exports.deleteRecommendation = async (req, res, next) => {
     next(error);
   }
 };
+
+
+
+// Outras operações necessárias para demonstração do programa
+
+exports.getLatestRecommendation = async (req, res, next) => {
+  try {
+    const latestRecommendation = await Recommendation.findOne({
+      order: [['id', 'DESC']] // Ordena por ID em ordem decrescente
+    });
+    res.json(latestRecommendation);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+
 
 
 
