@@ -2,6 +2,20 @@ const Recommendation = require('../models/Recomendation');
 const axios = require('axios');
 
 
+
+
+exports.getLatestRecommendation = async (req, res, next) => {
+  try {
+    const latestRecommendation = await Recommendation.findOne({
+      order: [['id', 'DESC']] // Ordena por ID em ordem decrescente
+    });
+    res.json(latestRecommendation);
+  } catch (error) {
+    next(error);
+  }
+};
+
+
 exports.getAllRecommendations = async (req, res, next) => {
   try {
     const recommendations = await Recommendation.findAll();
@@ -44,12 +58,20 @@ exports.createRecommendation = async (req, res, next) => {
     // Envia um POST para o microserviço Flask com os dados da nova recomendação
     const microservicoUrl = 'http://localhost:5000/update_recommendation';
     const microserviceImage = 'http://localhost:5000/update_image';
+    const microserviceSpotify = 'http://localhost:5000/search_album'
+
     await axios.post(microservicoUrl, {
       nome: titulo, // Envie o título como nome para o microserviço Flask
       id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
     });
 
     await axios.post(microserviceImage, {
+      nome: titulo, // Envie o título como nome para o microserviço Flask
+      id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
+    });
+
+
+    await axios.post(microserviceSpotify, {
       nome: titulo, // Envie o título como nome para o microserviço Flask
       id: newRecommendation.id // Envie o ID da nova recomendação para o microserviço Flask
     });
@@ -116,16 +138,6 @@ exports.deleteRecommendation = async (req, res, next) => {
 
 // Outras operações necessárias para demonstração do programa
 
-exports.getLatestRecommendation = async (req, res, next) => {
-  try {
-    const latestRecommendation = await Recommendation.findOne({
-      order: [['id', 'DESC']] // Ordena por ID em ordem decrescente
-    });
-    res.json(latestRecommendation);
-  } catch (error) {
-    next(error);
-  }
-};
 
 
 

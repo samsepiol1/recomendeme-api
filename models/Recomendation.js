@@ -30,6 +30,9 @@ const Recommendation = sequelize.define('Recommendation', {
   },
   reclink: {
     type: DataTypes.STRING(255)
+  },
+  reclink_spotify: {
+    type: DataTypes.STRING(255)
   }
 }, {
   // Nome da tabela
